@@ -1,0 +1,22 @@
+name: Status LED
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Connecting the GitHub workflow to Husarnet VPN network
+      uses: husarnet/husarnet-action@v2
+      with:
+        join-code: ${{ secrets.HUSARNET_JOINCODE }}
+
+    - name: ESP32 software reset
+      run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=red
+
+    - name: Stop Husarnet
+      run: sudo systemctl stop husarnet

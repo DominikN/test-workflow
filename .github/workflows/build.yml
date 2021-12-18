@@ -1,0 +1,19 @@
+name: Fake building
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: run some job
+      run: |
+        sleep 60
+        echo .
+        sleep 60
+        echo ..
+        exit 1
