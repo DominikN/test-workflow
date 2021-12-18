@@ -5,6 +5,7 @@ on:
     workflows: ["Fake building"]
     types:
       - completed
+      - requested
 
 jobs:
   led-yellow:
