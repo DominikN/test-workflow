@@ -16,7 +16,7 @@ jobs:
         join-code: ${{ secrets.HUSARNET_JOINCODE }}
 
     - name: ESP32 software reset
-      run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=red
+      run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=yellow
 
     - name: Stop Husarnet
       run: sudo systemctl stop husarnet
