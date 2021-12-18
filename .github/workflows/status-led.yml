@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-20.04
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     
-
     steps:
     - name: Connecting the GitHub workflow to Husarnet VPN network
       uses: husarnet/husarnet-action@v2
@@ -19,6 +18,8 @@ jobs:
         join-code: ${{ secrets.HUSARNET_JOINCODE }}
 
     - name: print context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
       run: |
         echo "$GITHUB_CONTEXT"
 

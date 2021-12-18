@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: run some job
+    - name: run something
       run: |
-        sleep 60
-        echo .
-        sleep 60
-        echo ..
-        exit 1
+        echo hello world
+
+    # - name: run something
+    #   run: |
+    #     sleep 60
+    #     echo .
+    #     sleep 60
+    #     echo ..
+    #     exit 1
