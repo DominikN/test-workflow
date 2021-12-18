@@ -32,8 +32,9 @@ jobs:
 
   on-success:
     runs-on: ubuntu-20.04
-    if: ${{ github.event.action == 'completed' && github.event.workflow_run.conclusion == 'success' }}
-    
+    # if: ${{ github.event.action == 'completed' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.action == 'completed' }}
+
     steps:
     - name: Connecting the GitHub workflow to Husarnet VPN network
       uses: husarnet/husarnet-action@v2
@@ -46,18 +47,18 @@ jobs:
     - name: Stop Husarnet
       run: sudo systemctl stop husarnet
 
-  on-failure:
-    runs-on: ubuntu-20.04
-    if: ${{ github.event.action == 'completed' && github.event.workflow_run.conclusion == 'failure' }}
+  # on-failure:
+  #   runs-on: ubuntu-20.04
+  #   if: ${{ github.event.action == 'completed' && github.event.workflow_run.conclusion == 'failure' }}
     
-    steps:
-    - name: Connecting the GitHub workflow to Husarnet VPN network
-      uses: husarnet/husarnet-action@v2
-      with:
-        join-code: ${{ secrets.HUSARNET_JOINCODE }}
+  #   steps:
+  #   - name: Connecting the GitHub workflow to Husarnet VPN network
+  #     uses: husarnet/husarnet-action@v2
+  #     with:
+  #       join-code: ${{ secrets.HUSARNET_JOINCODE }}
 
-    - name: Set LED
-      run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=red
+  #   - name: Set LED
+  #     run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=red
 
-    - name: Stop Husarnet
-      run: sudo systemctl stop husarnet
+  #   - name: Stop Husarnet
+  #     run: sudo systemctl stop husarnet
