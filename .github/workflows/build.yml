@@ -14,10 +14,10 @@ jobs:
       run: |
         echo hello world
 
-    # - name: run something
-    #   run: |
-    #     sleep 60
-    #     echo .
-    #     sleep 60
-    #     echo ..
-    #     exit 1
+    - name: run something
+      run: |
+        sleep 60
+        echo .
+        sleep 60
+        echo ..
+        exit 1
