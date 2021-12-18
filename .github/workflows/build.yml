@@ -16,6 +16,14 @@ jobs:
 
     - name: run something
       run: |
-        sleep 60
+        sleep 5
         echo .
         exit 1
+        
+    - name: Step To run on failure
+      if: ${{ failure() }}
+      run: echo failure!
+
+    - name: Step To run on success
+      if: ${{ success() }}
+      run: echo success!
