@@ -13,10 +13,10 @@ jobs:
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     
     steps:
-    - name: Connecting the GitHub workflow to Husarnet VPN network
-      uses: husarnet/husarnet-action@v2
-      with:
-        join-code: ${{ secrets.HUSARNET_JOINCODE }}
+    # - name: Connecting the GitHub workflow to Husarnet VPN network
+    #   uses: husarnet/husarnet-action@v2
+    #   with:
+    #     join-code: ${{ secrets.HUSARNET_JOINCODE }}
 
     - name: print context
       env:
@@ -24,11 +24,11 @@ jobs:
       run: |
         echo "$GITHUB_CONTEXT"
 
-    - name: Set LED
-      run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=yellow
+    # - name: Set LED
+    #   run: curl ${{ secrets.HUSARNET_HOSTNAME }}:8080/color=yellow
 
-    - name: Stop Husarnet
-      run: sudo systemctl stop husarnet
+    # - name: Stop Husarnet
+    #   run: sudo systemctl stop husarnet
 
   # on-success:
   #   runs-on: ubuntu-20.04
