@@ -19,14 +19,6 @@ jobs:
     - name: Set Christmas tree yellow
       run: curl http://pixel-led-chain:8080/color=yellow
 
-    - name: Test failure
-      if: ${{ failure() }}
-      run: echo "test failure"
-
-    - name: Test success
-      if: ${{ success() }}
-      run: echo "test success"
-
     - name: run something that fails
       run: |
         echo "building something..."
