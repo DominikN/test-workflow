@@ -3,7 +3,7 @@ name: Fake building
 on:
   push:
     branches:
-      - 'main'
+      - 'main-temp'
 
 jobs:
   build:

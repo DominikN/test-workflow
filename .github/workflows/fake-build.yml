@@ -1,0 +1,37 @@
+name: Fake workflow
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+    - name: Connecting the GitHub workflow to Husarnet VPN network
+      uses: husarnet/husarnet-action@v2
+      with:
+        join-code: ${{ secrets.HUSARNET_JOINCODE }}
+
+    - name: Set Christmas tree yellow
+      run: curl http://pixel-led-chain:8080/color=yellow
+
+    - name: run something
+      run: |
+        echo "building something"
+        sleep 50
+        echo "testing somethings"
+        sleep 10
+        echo "failing..."
+        exit 1
+        
+    - name: Step To run on failure
+      if: ${{ failure() }}
+      run: curl http://pixel-led-chain:8080/color=red
+
+    - name: Step To run on success
+      if: ${{ success() }}
+      run: curl http://pixel-led-chain:8080/color=green
