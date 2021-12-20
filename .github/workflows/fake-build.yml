@@ -19,22 +19,22 @@ jobs:
     - name: Set Christmas tree yellow
       run: curl http://pixel-led-chain:8080/color=yellow
 
-    # - name: run something that fails
-    #   run: |
-    #     echo "building something..."
-    #     sleep 5
-    #     echo "testing somethings..."
-    #     sleep 5
-    #     echo "fail!"
-    #     exit 1
-
-    - name: run something that does not fail
+    - name: run something that fails
       run: |
         echo "building something..."
         sleep 5
         echo "testing somethings..."
         sleep 5
-        echo "success!"
+        echo "fail!"
+        exit 1
+
+    # - name: run something that does not fail
+    #   run: |
+    #     echo "building something..."
+    #     sleep 5
+    #     echo "testing somethings..."
+    #     sleep 5
+    #     echo "success!"
         
     - name: Step to run on failure
       if: ${{ failure() }}
