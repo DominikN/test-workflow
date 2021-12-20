@@ -11,7 +11,7 @@ jobs:
 
     steps:
 
-    - name: Connecting the GitHub workflow to Husarnet VPN network
+    - name: Connecting VPN
       uses: husarnet/husarnet-action@v2
       with:
         join-code: ${{ secrets.HUSARNET_JOINCODE }}
@@ -43,3 +43,7 @@ jobs:
     - name: Step to run on success
       if: ${{ success() }}
       run: curl http://pixel-led-chain:8080/color=green
+
+    - name: Quit VPN
+      if: ${{ always() }}
+      run: sudo systemctl stop husarnet
